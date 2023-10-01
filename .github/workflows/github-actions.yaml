@@ -1,0 +1,21 @@
+name: Lint Code Base
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  checkstyle:
+    name: Checkstyle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dbelyaev/action-checkstyle@v0.9.5
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-check
+          workdir: ./Labs/src
+          level: warning
+          checkstyle_config: ./config/checkstyle.xml

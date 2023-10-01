@@ -1,4 +1,6 @@
+package com.kotov.lab1;
+
 @FunctionalInterface
 public interface Chooser<T> {
-    public T choose();
+    T choose();
 }
