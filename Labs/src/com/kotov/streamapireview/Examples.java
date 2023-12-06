@@ -71,7 +71,7 @@ public final class Examples {
         //          key = max(entries.keys(), key=lambda k: entries[k])
         //          print(f"{key} ({entries[key]})")
         //
-        //C#:       var entry = arr.GroupBy(x => x).OrderBy(x => x.Count()).First();
+        //C#:       var entry = arr.GroupBy(x => x).OrderBy(x => x.Count()).Last();
         //          Console.WriteLine($"{entry.Key} ({entry.Count()})");
 
         var entry = Arrays.stream(arr)
@@ -79,7 +79,7 @@ public final class Examples {
             .collect(Collectors.groupingBy(i -> i))
             .entrySet()
             .stream()
-            .min(Comparator.comparingLong(x -> (long) x.getValue().size()))
+            .max(Comparator.comparingLong(x -> (long) x.getValue().size()))
             .orElseThrow();
 
         System.out.printf("%d (%d)\n",
